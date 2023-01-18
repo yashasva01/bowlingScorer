@@ -1,4 +1,7 @@
-let rolls = [6, 4, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+let rolls1 = [6, 4, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+let rolls2 = [3, 6, 3, 6, 3, 6, 3, 6, 3, 6, 3, 6, 3, 6, 3, 6, 3, 6, 3, 6];
+let rolls3 = [1, 1, 2, 3, 4, 5, 4, 5, 5, 3, 3, 2, 3, 4, 5, 5, 3, 7, 10, 10, 4];
+let rolls4 = [0, 0, 0, 0, 5, 5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10, 10, 10];
 
 
 function getScore (rolls) {
@@ -8,7 +11,8 @@ function getScore (rolls) {
     let totalScore = 0;
     let frames = 10;
     for(let ind = 0; ind < rolls.length;) {
-        if(frames === 0){break;}
+        if(frames === 0){//throw new Error('More than 10 frames')
+            break;}
         //strike
         if (rolls[ind] > 10) {throw new Error('Cant be greater than 10');}
         else if(rolls[ind] == 10) {
@@ -34,6 +38,15 @@ function getScore (rolls) {
     }
     return totalScore;
 }
+console.log(getScore(rolls1))
+function getBestScore(rolls1, rolls2, rolls3, rolls4) {
+    let scoreArray = []
+    scoreArray.push(getScore(rolls1))
+    scoreArray.push(getScore(rolls2))
+    scoreArray.push(getScore(rolls3))
+    scoreArray.push(getScore(rolls4))
+    console.log(Math.max(...scoreArray));
+}
+console.log(getBestScore(rolls1, rolls2, rolls3, rolls4))
 
-console.log(getScore(rolls))
 module.exports = { getScore }
