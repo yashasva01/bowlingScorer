@@ -16,6 +16,8 @@ function getScore (rolls) {
             }
         }
     }
+
+    return totalScore;
 }
 
 console.log(getScore(rolls))
